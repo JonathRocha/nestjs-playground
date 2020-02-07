@@ -1,0 +1,13 @@
+{
+    "watch": [
+        "src"
+    ],
+    "ignore": [
+        ".git",
+        "tmp/**/*",
+        "node_modules/**/node_modules"
+    ],
+    "execMap": {
+      "ts": "node -r tsconfig-paths/register -r ts-node/register --inspect=0.0.0.0:9228 src/main.ts"
+  }
+}
