@@ -30,4 +30,14 @@ export class UserController {
         Logger.log(file);
         return { message: 'Uploaded!' };
     }
+
+    @Get('pessoas')
+    async getPessoas() {
+        return { pessoas: await this.userService.getPessoas() };
+    }
+
+    @Get('notas')
+    async getNotas() {
+        return { notas: await this.userService.getNotas() };
+    }
 }

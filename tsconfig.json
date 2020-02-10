@@ -10,6 +10,9 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
+    "paths": {
+        "@models/*": ["src/models/*"]
+    },
     "typeRoots": [
         "./typings",
         "./node_modules/@types"

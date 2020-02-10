@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { MongoRepository } from 'typeorm';
-import { Empresa } from 'src/config/mongodb/entities/EmpresaEntity';
+import { InjectRepository, InjectConnection } from '@nestjs/typeorm';
+import { MongoRepository, Connection } from 'typeorm';
+import { Empresa } from '@models/mongodb/Empresa';
 
 type Hello = {
     hello: string;
@@ -10,15 +10,17 @@ type Hello = {
 @Injectable()
 export class AppService {
     constructor(
-        @InjectRepository(Empresa)
-        private readonly empresaRepo: MongoRepository<Empresa>,
+        @InjectConnection('fiscalConnection')
+        private readonly connection: Connection,
     ) {}
 
     getHello(): Hello {
         return { hello: 'world' };
     }
 
-    async getEmpresas(): Promise<Array<Empresa>> {
-        return this.empresaRepo.find({});
+    async getEmpresas(): Promise<Empresa[]> {
+        return this.connection.getMongoRepository(Empresa).find({
+            select: ['codDpnet'],
+        });
     }
 }
