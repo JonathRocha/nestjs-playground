@@ -6,7 +6,13 @@ export class AppController {
     constructor(private readonly appService: AppService) {}
 
     @Get()
-    getHello(): {} {
+    getHello() {
         return this.appService.getHello();
+    }
+
+    @Get('empresas')
+    async getEmpresas() {
+        const empresas = await this.appService.getEmpresas();
+        return { empresas };
     }
 }

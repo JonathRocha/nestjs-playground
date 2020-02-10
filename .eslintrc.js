@@ -33,6 +33,7 @@ module.exports = {
         'no-plusplus': 'off',
         'no-useless-constructor': 'off',
         'class-methods-use-this': 'off',
+        'max-classes-per-file': 'off',
         'prefer-const': [
             'error',
             {
