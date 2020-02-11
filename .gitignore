@@ -11,7 +11,7 @@ yarn-error.log*
 lerna-debug.log*
 
 # Uploads
-/tmp/uploads/*
+/src/tmp/uploads/*
 
 # OS
 .DS_Store
@@ -40,7 +40,7 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # Keep directory
-!/tmp/uploads/.gitkeep
+!/src/tmp/uploads/.gitkeep
 
 # Keep env sample
 !sample.env

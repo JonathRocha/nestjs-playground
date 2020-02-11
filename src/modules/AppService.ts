@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository, InjectConnection } from '@nestjs/typeorm';
-import { MongoRepository, Connection } from 'typeorm';
+import { InjectConnection } from '@nestjs/typeorm';
+import { Connection } from 'typeorm';
 import { Empresa } from '@models/mongodb/Empresa';
 
 type Hello = {

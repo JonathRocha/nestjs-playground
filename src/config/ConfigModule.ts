@@ -1,5 +1,5 @@
 import { Module, Global } from '@nestjs/common';
-import { resolve } from 'path';
+import { join } from 'path';
 import { MulterModule } from '@nestjs/platform-express';
 import { DatabaseModule } from './DatabaseModule';
 
@@ -7,7 +7,7 @@ import { DatabaseModule } from './DatabaseModule';
 @Module({
     imports: [
         MulterModule.register({
-            dest: resolve(process.cwd(), 'tmp/uploads'),
+            dest: join(__dirname, '../tmp/uploads'),
         }),
         DatabaseModule,
     ],

@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
-import { DomPedroPessoa } from '@models/mysql/DomPedroPessoa';
-import { Connection, Repository } from 'typeorm';
+import { InjectConnection } from '@nestjs/typeorm';
+import { Connection } from 'typeorm';
 import { FiscalNotaFiscal } from '@models/mysql/FiscalNotaFiscal';
 import { DomPedroNotaFiscal } from '@models/mysql/DomPedroNotaFiscal';
 
@@ -38,9 +37,20 @@ export class UserService {
     }
 
     async getNotas(): Promise<any> {
+        // return this.connection.getRepository(FiscalNotaFiscal).find({
+        //     relations: ['nota_fiscal'],
+        //     take: 1,
+        //     order: {
+        //         id: 'ASC',
+        //     },
+        // });
+        // return this.connection.get
+        //     .getRepository(DomPedroNotaFiscal).
+        // .findOne(58993035, {
+        //     relations: ['nota_fiscal_sefaz'],
+        // });
         return this.connection.getRepository(FiscalNotaFiscal).find({
-            select: ['nota_fiscal_as', 'id'],
-            // relations: ['nota_fiscal'],
+            relations: ['nota_fiscal'],
             take: 1,
             order: {
                 id: 'ASC',

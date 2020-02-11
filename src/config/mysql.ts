@@ -8,7 +8,7 @@ const config: ConnectionOptions = {
     multipleStatements: true,
     acquireTimeout: 30000,
     bigNumberStrings: false,
-    entities: [join(__dirname, 'src/models/mysql/**/*.ts')],
+    entities: [join(__dirname, '../models/mysql/*.ts')],
     host: process.env.MYSQL_INTRANET_HOST,
     port: Number(process.env.MYSQL_INTRANET_PORT),
     username: process.env.MYSQL_INTRANET_USER,
@@ -20,9 +20,9 @@ const config: ConnectionOptions = {
     },
     name: 'intranet',
     synchronize: false,
-    migrations: [join(__dirname, 'src/migration/*.ts')],
+    migrations: [join(__dirname, '../migrations/*.ts')],
     cli: {
-        migrationsDir: join(__dirname, 'src/migrations'),
+        migrationsDir: join(__dirname, '../migrations'),
     },
 };
 

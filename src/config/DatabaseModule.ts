@@ -9,7 +9,7 @@ const defaultMongoConfig: TypeOrmModuleOptions = {
     port: Number(process.env.MONGO_PORT),
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    entities: [join(__dirname, 'src/models/mongodb/*.ts')],
+    entities: [join(__dirname, '../models/mongodb/*.ts')],
     logging: true,
 };
 

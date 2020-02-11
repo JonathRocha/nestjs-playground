@@ -12,13 +12,10 @@ export class FiscalNotaFiscal {
     @Column()
     valor: number;
 
-    @Column({ select: false })
+    @Column()
     nota_fiscal_as: number;
 
-    @OneToOne(
-        (type) => DomPedroNotaFiscal,
-        (nf) => nf.nota_fiscal_as,
-    )
+    @OneToOne((type) => DomPedroNotaFiscal)
     @JoinColumn({ name: 'nota_fiscal_as' })
     nota_fiscal: DomPedroNotaFiscal;
 }
