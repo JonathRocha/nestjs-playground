@@ -1,23 +1,16 @@
+import 'dotenv/config';
+import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import mysqlConfig from './mysql';
 
 const defaultMongoConfig: TypeOrmModuleOptions = {
     type: 'mongodb',
     port: Number(process.env.MONGO_PORT),
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    entities: ['src/models/mongodb/*.ts'],
+    entities: [join(__dirname, 'src/models/mongodb/*.ts')],
     logging: true,
-};
-
-const defaultMysqlConfig: TypeOrmModuleOptions = {
-    type: 'mysql',
-    port: Number(process.env.MYSQL_INTRANET_PORT),
-    logging: true,
-    multipleStatements: true,
-    acquireTimeout: 30000,
-    bigNumberStrings: false,
-    entities: ['src/models/mysql/**/*.ts'],
 };
 
 @Module({
@@ -31,18 +24,7 @@ const defaultMysqlConfig: TypeOrmModuleOptions = {
             database: 'fiscal',
             name: 'fiscalConnection',
         }),
-        TypeOrmModule.forRoot({
-            ...defaultMysqlConfig,
-            host: process.env.MYSQL_INTRANET_HOST,
-            username: process.env.MYSQL_INTRANET_USER,
-            password: process.env.MYSQL_INTRANET_PWD,
-            database: 'fiscal',
-            extra: {
-                connectionLimit: 5,
-                waitForConnections: true,
-            },
-            name: 'intranet',
-        }),
+        TypeOrmModule.forRoot(mysqlConfig),
     ],
     exports: [TypeOrmModule],
 })
