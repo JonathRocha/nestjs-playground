@@ -27,6 +27,7 @@
     "@nestjs/core": "^6.11.6",
     "@nestjs/platform-express": "^6.11.6",
     "@nestjs/typeorm": "^6.2.0",
+    "class-validator": "^0.11.0",
     "dotenv": "^8.2.0",
     "mongodb": "^3.5.2",
     "mongoose": "^5.8.11",
