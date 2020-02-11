@@ -15,7 +15,7 @@ export class FiscalNotaFiscal {
     @Column()
     nota_fiscal_as: number;
 
-    @OneToOne((type) => DomPedroNotaFiscal)
+    @OneToOne(() => DomPedroNotaFiscal)
     @JoinColumn({ name: 'nota_fiscal_as' })
     nota_fiscal: DomPedroNotaFiscal;
 }
