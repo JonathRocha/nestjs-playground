@@ -1,18 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './AppService';
+import { Controller, Get, Post, Request, Body } from '@nestjs/common';
+import { AuthService } from './auth/AuthService';
 
 @Controller()
 export class AppController {
-    constructor(private readonly appService: AppService) {}
+    constructor(private readonly authService: AuthService) {}
 
-    @Get()
-    getHello() {
-        return this.appService.getHello();
-    }
-
-    @Get('empresas')
-    async getEmpresas() {
-        const empresas = await this.appService.getEmpresas();
-        return { empresas };
+    @Post('auth/login')
+    async login(@Body() req) {
+        console.log('req', req);
+        return this.authService.login(req);
     }
 }

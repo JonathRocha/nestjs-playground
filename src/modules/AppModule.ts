@@ -1,16 +1,18 @@
-import { Module } from '@nestjs/common';
+import { Module, HttpModule } from '@nestjs/common';
 import { RouterModule } from 'nest-router';
 import { AppController } from './AppController';
 import { AppService } from './AppService';
 import { UserModule } from './user/UserModule';
-import { ConfigModule } from '../config/ConfigModule';
+import { GlobalModule } from '../config/GlobalModule';
 import { routes } from '../routes';
 import StoreModule from './store/StoreModule';
+import { AuthModule } from './auth/AuthModule';
 
 @Module({
     imports: [
         RouterModule.forRoutes(routes),
-        ConfigModule,
+        GlobalModule,
+        AuthModule,
         UserModule,
         StoreModule,
     ],

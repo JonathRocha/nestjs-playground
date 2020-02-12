@@ -6,9 +6,12 @@ import {
     UploadedFile,
     Logger,
     BadRequestException,
+    Request,
+    UseGuards,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UserService } from './UserService';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller()
 export class UserController {
@@ -39,5 +42,11 @@ export class UserController {
     @Get('notas')
     async getNotas() {
         return { notas: await this.userService.getNotas() };
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Get('profile')
+    getProfile(@Request() req) {
+        return req.user;
     }
 }
