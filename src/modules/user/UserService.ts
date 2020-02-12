@@ -10,7 +10,7 @@ type User = {
 
 @Injectable()
 export class UserService {
-    private readonly users: Array<User>;
+    private readonly users: User[];
 
     constructor(
         @InjectConnection('intranet')
