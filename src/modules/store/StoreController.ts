@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query, Post, Body } from '@nestjs/common';
 import StoreService from './StoreService';
 import { getProductsParams } from './StoreValidators';
 
@@ -6,8 +6,14 @@ import { getProductsParams } from './StoreValidators';
 export default class StoreController {
     constructor(private readonly storeService: StoreService) {}
 
+    // http://localhost:3001/store/products?id=12345
     @Get('products')
-    getProducts(@Param() params: getProductsParams) {
+    getProducts(@Query() params: getProductsParams) {
+        return this.storeService.getProducts();
+    }
+
+    @Post('products')
+    getProductsPost(@Body() params: getProductsParams) {
         return this.storeService.getProducts();
     }
 }
