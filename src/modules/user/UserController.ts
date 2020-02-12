@@ -10,8 +10,8 @@ import {
     UseGuards,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { UserService } from './UserService';
 import { AuthGuard } from '@nestjs/passport';
+import { UserService } from './UserService';
 
 @Controller()
 export class UserController {

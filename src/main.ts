@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
-import { AppModule } from './modules/AppModule';
 import * as compression from 'compression';
 import * as helmet from 'helmet';
 import * as rateLimit from 'express-rate-limit';
+import { AppModule } from './modules/AppModule';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);

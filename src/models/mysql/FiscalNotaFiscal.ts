@@ -13,6 +13,9 @@ export class FiscalNotaFiscal {
     valor: number;
 
     @Column()
+    emitente_cnpj: string;
+
+    @Column()
     nota_fiscal_as: number;
 
     @OneToOne(() => DomPedroNotaFiscal)

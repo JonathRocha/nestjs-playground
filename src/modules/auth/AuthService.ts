@@ -15,8 +15,7 @@ export class AuthService {
     ) {}
 
     async login(user: any) {
-        const username = user.username;
-        const password = user.password;
+        const { username, password } = user;
         const company = user.central ? '99' : user.company;
 
         return this.httpService
