@@ -23,6 +23,7 @@
     "typeorm:run": "yarn run typeorm migration:run"
   },
   "dependencies": {
+    "@codeinplace/js-utils": "^1.0.1",
     "@nestjs/common": "^6.11.6",
     "@nestjs/core": "^6.11.6",
     "@nestjs/platform-express": "^6.11.6",

@@ -11,8 +11,7 @@
     "baseUrl": "./",
     "incremental": true,
     "paths": {
-        "@models/*": ["src/models/*"],
-        "@utils/*": ["src/models/*"]
+        "@models/*": ["src/models/*"]
     },
     "typeRoots": [
         "./typings",
