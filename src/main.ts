@@ -17,8 +17,7 @@ async function bootstrap() {
             max: 100, // limit each IP to 100 requests per windowMs
         }),
     );
-    app.useGlobalPipes(new ValidationPipe());
-
+    app.useGlobalPipes(new ValidationPipe({ transform: true }));
     await app.listen(process.env.PORT || 3001, () => {
         Logger.log(
             `🚀\tServer is running on port ${process.env.PORT ||

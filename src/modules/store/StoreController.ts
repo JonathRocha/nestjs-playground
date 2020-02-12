@@ -1,19 +1,18 @@
-import { Controller, Get, Param, Query, Post, Body } from '@nestjs/common';
+import { Controller, Get, Query, Post, Body, Logger } from '@nestjs/common';
 import StoreService from './StoreService';
-import { getProductsParams } from './StoreValidators';
+import { GetProductsDTO } from './StoreDTO';
 
 @Controller()
 export default class StoreController {
     constructor(private readonly storeService: StoreService) {}
 
-    // http://localhost:3001/store/products?id=12345
     @Get('products')
-    getProducts(@Query() params: getProductsParams) {
+    getProducts(@Query() params: GetProductsDTO) {
         return this.storeService.getProducts();
     }
 
     @Post('products')
-    getProductsPost(@Body() params: getProductsParams) {
+    getProductsPost(@Body() params: GetProductsDTO) {
         return this.storeService.getProducts();
     }
 }
