@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { SequelizeModule } from '@nestjs/sequelize';
 import mysqlConfig from './mysql';
 
 const defaultMongoConfig: TypeOrmModuleOptions = {
@@ -24,8 +25,8 @@ const defaultMongoConfig: TypeOrmModuleOptions = {
             database: 'fiscal',
             name: 'fiscalConnection',
         }),
-        TypeOrmModule.forRoot(mysqlConfig),
+        SequelizeModule.forRoot(mysqlConfig),
     ],
-    exports: [TypeOrmModule],
+    exports: [TypeOrmModule, SequelizeModule],
 })
 export class DatabaseModule {}

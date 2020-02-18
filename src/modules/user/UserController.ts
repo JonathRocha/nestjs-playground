@@ -41,7 +41,8 @@ export class UserController {
 
     @Get('notas')
     async getNotas() {
-        return { notas: await this.userService.getNotas() };
+        const notas = await this.userService.getNotas();
+        return { notas };
     }
 
     @UseGuards(AuthGuard('jwt'))

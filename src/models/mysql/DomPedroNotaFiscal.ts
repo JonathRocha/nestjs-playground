@@ -15,6 +15,9 @@ export class DomPedroNotaFiscal {
     @Column()
     modelo: number;
 
+    @Column()
+    deleted_at: Date;
+
     @OneToOne(() => FiscalNotaFiscal)
     @JoinColumn({ name: 'id', referencedColumnName: 'nota_fiscal_as' })
     nota_fiscal_sefaz: FiscalNotaFiscal;
