@@ -1,11 +1,97 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = env("MYSQL_INTRANET_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
+model NotaFiscal {
+  aliq_iss              Float?
+  bairro                String?
+  base_icms             Float?
+  base_iss              Float?
+  base_subst            Float?
+  cep                   String?
+  cfop                  String?
+  chave                 String?
+  cidade                String?
+  cpf_cnpj              String?
+  created_at            DateTime?
+  cupom                 String?
+  data_emissao          Int
+  data_saida            Int
+  deleted_at            DateTime?
+  empresa               Int?
+  endereco              String?
+  especie               String?
+  estado                String?
+  fatura_numero         String?
+  fatura_valor_bruto    Float?
+  fatura_valor_desconto Float?
+  fatura_valor_liquido  Float?
+  fatura_vencto         Int?
+  fone                  String?
+  hora_saida            Int?
+  id                    Int       @id
+  id_vinculo            Int?
+  inscr_est             String?
+  km                    String?
+  marca                 String?
+  modelo                Int?
+  natureza              String?
+  nome                  String?
+  numero                String?
+  numero_nota           Int?
+  obs                   String?
+  perc_acrescimo        Float?
+  per_desconto          Float?
+  peso_bruto            Float?
+  peso_liquido          Float?
+  pessoa                Int?
+  placa                 String?
+  quantidade            Float?
+  seq                   Int?
+  serie                 String?
+  situacao              String?
+  subserie              String?
+  tipo                  String?
+  tipo_frete            String?
+  total_produto         Float?
+  total_servico         Float?
+  trans_cidade          String?
+  trans_cnpj            String?
+  trans_endereco        String?
+  trans_estado          String?
+  trans_frete           String?
+  trans_inscr_est       String?
+  trans_municipio       String?
+  trans_nome            String?
+  trans_placa           String?
+  updated_at            DateTime?
+  valor_acrescimo       Float?
+  valor_desconto        Float?
+  valor_frete           Float?
+  valor_icms            Float?
+  valor_ipi             Float?
+  valor_isento          Float?
+  valor_iss             Float?
+  valor_nota            Float?
+  valor_outras          Float?
+  valor_outr_des        Float?
+  valor_seguro          Float?
+  valor_subst           Float?
+
+  @@index([data_emissao], name: "data_emissao")
+  @@index([data_saida], name: "data_saida")
+  @@index([empresa], name: "empresa")
+  @@index([empresa, data_emissao], name: "empresa_data_emissao")
+  @@index([empresa, data_saida], name: "empresa_data_saida")
+  @@index([empresa, hora_saida], name: "empresa_emissao")
+  @@index([hora_saida], name: "hora_saida")
+  @@index([id_vinculo], name: "id_vinculo")
+  @@index([seq], name: "seq")
+  @@index([tipo], name: "tipo")
+  @@map("nota_fiscal")
 }

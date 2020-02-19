@@ -1,9 +1,5 @@
-import { Injectable, Logger } from '@nestjs/common';
-// import { InjectConnection } from '@nestjs/typeorm';
-// import { Connection, JoinOptions } from 'typeorm';
-// import { InjectModel } from '@nestjs/sequelize';
-import { Sequelize } from 'sequelize-typescript';
-import { FiscalNotaFiscal } from '@models/mysql/FiscalNotaFiscal';
+import { Injectable } from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
 
 type User = {
     name: string;
@@ -14,11 +10,10 @@ type User = {
 export class UserService {
     private readonly users: User[];
 
-    constructor(
-        // @InjectModel(FiscalNotaFiscal)
-        // private readonly nfModel: typeof FiscalNotaFiscal,
-        private readonly sequelize: Sequelize,
-    ) {
+    private readonly prisma: PrismaClient;
+
+    constructor() {
+        this.prisma = new PrismaClient();
         this.users = [
             {
                 name: 'Jonathan Rocha',
@@ -38,14 +33,15 @@ export class UserService {
     }
 
     async getNotas(): Promise<any> {
+        const notas = await this.prisma.notaFiscal.findMany({ where: {} });
+        return notas;
+
         // this.sequelize.getRepository(FiscalNotaFiscal).create();
-
-        return this.sequelize.getRepository(FiscalNotaFiscal).findAll({
-            where: {
-                id: 7,
-            },
-        });
-
+        // return this.sequelize.getRepository(FiscalNotaFiscal).findAll({
+        //     where: {
+        //         id: 7,
+        //     },
+        // });
         // return this.nfModel.findAll({
         //     attributes: ['id'],
         //     where: {
