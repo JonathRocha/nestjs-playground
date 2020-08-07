@@ -33,7 +33,7 @@
         "@nestjs/sequelize": "^0.0.2",
         "@nestjs/typeorm": "^6.3.1",
         "@prisma/client": "^2.0.0-preview022",
-        "class-transformer": "^0.2.3",
+        "class-transformer": "^0.3.1",
         "class-validator": "^0.11.0",
         "compression": "^1.7.4",
         "dotenv": "^8.2.0",
